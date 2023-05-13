@@ -10,7 +10,7 @@ using Super_Book_Store.Data;
 namespace Super_Book_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230512093557_Create_Table_KhachHang")]
+    [Migration("20230512113949_Create_Table_KhachHang")]
     partial class Create_Table_KhachHang
     {
         /// <inheritdoc />
@@ -21,7 +21,7 @@ namespace Super_Book_Store.Migrations
 
             modelBuilder.Entity("Super_Book_Store.Models.KhachHang", b =>
                 {
-                    b.Property<string>("KhachHangID")
+                    b.Property<string>("CodeKhachHang")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Address")
@@ -35,9 +35,31 @@ namespace Super_Book_Store.Migrations
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("KhachHangID");
+                    b.HasKey("CodeKhachHang");
 
                     b.ToTable("KhachHang");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.Kho", b =>
+                {
+                    b.Property<string>("BookName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("NhapKho")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SoLuong")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TonKho")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("XuatKho")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("BookName");
+
+                    b.ToTable("Kho");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,23 +5,21 @@
 namespace Super_Book_Store.Migrations
 {
     /// <inheritdoc />
-    public partial class Create_Table_KhachHang : Migration
+    public partial class Create_Table_NhaXuatBan : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "KhachHang",
+                name: "NhaXuatBan",
                 columns: table => new
                 {
-                    KhachHangID = table.Column<string>(type: "TEXT", nullable: false),
-                    KhachHangName = table.Column<string>(type: "TEXT", nullable: false),
-                    PhoneNumber = table.Column<int>(type: "INTEGER", nullable: false),
+                    NXBName = table.Column<string>(type: "TEXT", nullable: false),
                     Address = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_KhachHang", x => x.KhachHangID);
+                    table.PrimaryKey("PK_NhaXuatBan", x => x.NXBName);
                 });
         }
 
@@ -29,7 +27,7 @@ namespace Super_Book_Store.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "KhachHang");
+                name: "NhaXuatBan");
         }
     }
 }

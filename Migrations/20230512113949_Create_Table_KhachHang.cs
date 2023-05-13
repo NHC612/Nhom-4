@@ -1,0 +1,28 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace Super_Book_Store.Migrations
+{
+    /// <inheritdoc />
+    public partial class Create_Table_KhachHang : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.RenameColumn(
+                name: "KhachHangID",
+                table: "KhachHang",
+                newName: "CodeKhachHang");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.RenameColumn(
+                name: "CodeKhachHang",
+                table: "KhachHang",
+                newName: "KhachHangID");
+        }
+    }
+}

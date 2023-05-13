@@ -7,12 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Super_Book_Store.Data;
 using Super_Book_Store.Models;
+using Super_Book_Store.Models.Process;
 
 namespace Super_Book_Store.Controllers
 {
     public class KhachHangController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private ExcelProcess _excelProcess = new ExcelProcess();
+        private string fileName;
 
         public KhachHangController(ApplicationDbContext context)
         {
@@ -22,11 +25,13 @@ namespace Super_Book_Store.Controllers
         // GET: KhachHang
         public async Task<IActionResult> Index()
         {
-              return _context.KhachHang != null ? 
-                          View(await _context.KhachHang.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.KhachHang'  is null.");
+              return View(await _context.KhachHang.ToListAsync());                
         }
-
+        private bool EmloyeeExists(string id)
+        {
+            return _context.KhachHang.Any(e => e.CodeKhachHang == id);
+        }
+        
         // GET: KhachHang/Details/5
         public async Task<IActionResult> Details(string id)
         {
@@ -36,7 +41,7 @@ namespace Super_Book_Store.Controllers
             }
 
             var khachHang = await _context.KhachHang
-                .FirstOrDefaultAsync(m => m.KhachHangID == id);
+                .FirstOrDefaultAsync(m => m.CodeKhachHang == id);
             if (khachHang == null)
             {
                 return NotFound();
@@ -56,7 +61,7 @@ namespace Super_Book_Store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("KhachHangID,KhachHangName,PhoneNumber,Address")] KhachHang khachHang)
+        public async Task<IActionResult> Create([Bind("CodeKhachHang,KhachHangName,PhoneNumber,Address")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
@@ -88,9 +93,9 @@ namespace Super_Book_Store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("KhachHangID,KhachHangName,PhoneNumber,Address")] KhachHang khachHang)
+        public async Task<IActionResult> Edit(string id, [Bind("CodeKhachHang,KhachHangName,PhoneNumber,Address")] KhachHang khachHang)
         {
-            if (id != khachHang.KhachHangID)
+            if (id != khachHang.CodeKhachHang)
             {
                 return NotFound();
             }
@@ -104,7 +109,7 @@ namespace Super_Book_Store.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KhachHangExists(khachHang.KhachHangID))
+                    if (!KhachHangExists(khachHang.CodeKhachHang))
                     {
                         return NotFound();
                     }
@@ -127,7 +132,7 @@ namespace Super_Book_Store.Controllers
             }
 
             var khachHang = await _context.KhachHang
-                .FirstOrDefaultAsync(m => m.KhachHangID == id);
+                .FirstOrDefaultAsync(m => m.CodeKhachHang == id);
             if (khachHang == null)
             {
                 return NotFound();
@@ -157,7 +162,50 @@ namespace Super_Book_Store.Controllers
 
         private bool KhachHangExists(string id)
         {
-          return (_context.KhachHang?.Any(e => e.KhachHangID == id)).GetValueOrDefault();
+          return (_context.KhachHang?.Any(e => e.CodeKhachHang == id)).GetValueOrDefault();
+        }
+        public async Task<IActionResult>Upload()
+        {
+            return View();
+        }
+        [HttpPost]
+          [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Upload(IFormFile file){
+
+            if(file != null){
+                string fileExtension = Path.GetExtension(file.FileName);
+                if(fileExtension != ".xls" && fileExtension != ".xlsx")
+                {
+                    ModelState.AddModelError("","Please choose excel file to upload!");
+                }
+                else{
+                    var fileName = DateTime.Now.ToShortTimeString() + fileExtension;
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Upload/Excels", fileName);
+                    var fileLocation = new FileInfo(filePath).ToString();
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+
+                        var dt = _excelProcess.ExcelToDataTable(fileLocation);
+                        for(int i = 0; i< dt.Rows.Count; i++)
+                        {
+                            var emp = new KhachHang();
+
+                            emp.CodeKhachHang = dt.Rows[i][0].ToString();
+                            emp.KhachHangName = dt.Rows[i][1].ToString();
+                            emp.PhoneNumber = dt.Rows[i][2].ToString();
+                            emp.Address = dt.Rows[i][3].ToString();
+
+                            _context.KhachHang.Add(emp);
+                        } 
+
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+            }
+            return View();
         }
     }
 }
+    

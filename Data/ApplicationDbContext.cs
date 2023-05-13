@@ -13,6 +13,12 @@ namespace Super_Book_Store.Data
         }
 
         public DbSet<Super_Book_Store.Models.KhachHang> KhachHang { get; set; } = default!;
+
+        public DbSet<Super_Book_Store.Models.Kho> Kho { get; set; } = default!;
+
+        public DbSet<Super_Book_Store.Models.NhaXuatBan> NhaXuatBan { get; set; } = default!;
+
+        
     }
 
 }

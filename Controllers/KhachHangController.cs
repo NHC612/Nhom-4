@@ -53,6 +53,7 @@ namespace Super_Book_Store.Controllers
         // GET: KhachHang/Create
         public IActionResult Create()
         {
+            
             return View();
         }
 
@@ -69,6 +70,7 @@ namespace Super_Book_Store.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            
             return View(khachHang);
         }
 

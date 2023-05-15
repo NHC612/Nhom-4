@@ -10,89 +10,87 @@ using Super_Book_Store.Models;
 
 namespace Super_Book_Store.Controllers
 {
-    public class KhoController : Controller
+    public class SachController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public KhoController(ApplicationDbContext context)
+        public SachController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Kho
+        // GET: Sach
         public async Task<IActionResult> Index()
         {
-              return _context.Kho != null ? 
-                          View(await _context.Kho.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Kho'  is null.");
+              return _context.Sach != null ? 
+                          View(await _context.Sach.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Sach'  is null.");
         }
 
-        // GET: Kho/Details/5
+        // GET: Sach/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Kho == null)
+            if (id == null || _context.Sach == null)
             {
                 return NotFound();
             }
 
-            var kho = await _context.Kho
-                .FirstOrDefaultAsync(m => m.BookName == id);
-            if (kho == null)
+            var sach = await _context.Sach
+                .FirstOrDefaultAsync(m => m.SachID == id);
+            if (sach == null)
             {
                 return NotFound();
             }
 
-            return View(kho);
+            return View(sach);
         }
 
-        // GET: Kho/Create
+        // GET: Sach/Create
         public IActionResult Create()
         {
-            
             return View();
         }
 
-        // POST: Kho/Create
+        // POST: Sach/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookName,SoLuong,TonKho,NhapKho,XuatKho")] Kho kho)
+        public async Task<IActionResult> Create([Bind("SachID,SachName")] Sach sach)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(kho);
+                _context.Add(sach);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            
-            return View(kho);
+            return View(sach);
         }
 
-        // GET: Kho/Edit/5
+        // GET: Sach/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Kho == null)
+            if (id == null || _context.Sach == null)
             {
                 return NotFound();
             }
 
-            var kho = await _context.Kho.FindAsync(id);
-            if (kho == null)
+            var sach = await _context.Sach.FindAsync(id);
+            if (sach == null)
             {
                 return NotFound();
             }
-            return View(kho);
+            return View(sach);
         }
 
-        // POST: Kho/Edit/5
+        // POST: Sach/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("BookName,SoLuong,TonKho,NhapKho,XuatKho")] Kho kho)
+        public async Task<IActionResult> Edit(string id, [Bind("SachID,SachName")] Sach sach)
         {
-            if (id != kho.BookName)
+            if (id != sach.SachID)
             {
                 return NotFound();
             }
@@ -101,12 +99,12 @@ namespace Super_Book_Store.Controllers
             {
                 try
                 {
-                    _context.Update(kho);
+                    _context.Update(sach);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KhoExists(kho.BookName))
+                    if (!SachExists(sach.SachID))
                     {
                         return NotFound();
                     }
@@ -117,49 +115,49 @@ namespace Super_Book_Store.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(kho);
+            return View(sach);
         }
 
-        // GET: Kho/Delete/5
+        // GET: Sach/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Kho == null)
+            if (id == null || _context.Sach == null)
             {
                 return NotFound();
             }
 
-            var kho = await _context.Kho
-                .FirstOrDefaultAsync(m => m.BookName == id);
-            if (kho == null)
+            var sach = await _context.Sach
+                .FirstOrDefaultAsync(m => m.SachID == id);
+            if (sach == null)
             {
                 return NotFound();
             }
 
-            return View(kho);
+            return View(sach);
         }
 
-        // POST: Kho/Delete/5
+        // POST: Sach/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Kho == null)
+            if (_context.Sach == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Kho'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Sach'  is null.");
             }
-            var kho = await _context.Kho.FindAsync(id);
-            if (kho != null)
+            var sach = await _context.Sach.FindAsync(id);
+            if (sach != null)
             {
-                _context.Kho.Remove(kho);
+                _context.Sach.Remove(sach);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KhoExists(string id)
+        private bool SachExists(string id)
         {
-          return (_context.Kho?.Any(e => e.BookName == id)).GetValueOrDefault();
+          return (_context.Sach?.Any(e => e.SachID == id)).GetValueOrDefault();
         }
     }
 }

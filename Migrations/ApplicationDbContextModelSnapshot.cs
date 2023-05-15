@@ -16,24 +16,6 @@ namespace Super_Book_Store.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
 
-            modelBuilder.Entity("Super_Book_Store.Models.Employee", b =>
-                {
-                    b.Property<string>("EmpID")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("EmpName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("EmpID");
-
-                    b.ToTable("Employee");
-                });
-
             modelBuilder.Entity("Super_Book_Store.Models.KhachHang", b =>
                 {
                     b.Property<string>("CodeKhachHang")
@@ -47,8 +29,9 @@ namespace Super_Book_Store.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("CodeKhachHang");
 
@@ -63,6 +46,10 @@ namespace Super_Book_Store.Migrations
                     b.Property<int>("NhapKho")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("SachID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("SoLuong")
                         .HasColumnType("INTEGER");
 
@@ -73,6 +60,8 @@ namespace Super_Book_Store.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("BookName");
+
+                    b.HasIndex("SachID");
 
                     b.ToTable("Kho");
                 });
@@ -89,6 +78,31 @@ namespace Super_Book_Store.Migrations
                     b.HasKey("NXBName");
 
                     b.ToTable("NhaXuatBan");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.Sach", b =>
+                {
+                    b.Property<string>("SachCode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SachName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("SachCode");
+
+                    b.ToTable("Sach");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.Kho", b =>
+                {
+                    b.HasOne("Super_Book_Store.Models.Sach", "Sach")
+                        .WithMany()
+                        .HasForeignKey("SachID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Sach");
                 });
 #pragma warning restore 612, 618
         }

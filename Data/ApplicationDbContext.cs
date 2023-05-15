@@ -18,6 +18,15 @@ namespace Super_Book_Store.Data
 
         public DbSet<Super_Book_Store.Models.NhaXuatBan> NhaXuatBan { get; set; } = default!;
 
+        public DbSet<Super_Book_Store.Models.Sach> Sach { get; set; } = default!;
+       
+
+        
+
+     
+
+        
+
         
     }
 

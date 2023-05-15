@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Super_Book_Store.Models
 {
     
@@ -12,5 +12,6 @@ namespace Super_Book_Store.Models
         public int NhapKho {get; set; }
         public int XuatKho {get; set; }
         
+     
     }
 }

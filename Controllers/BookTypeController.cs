@@ -10,87 +10,90 @@ using Super_Book_Store.Models;
 
 namespace Super_Book_Store.Controllers
 {
-    public class KhachHangController : Controller
+    public class BookTypeController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public KhachHangController(ApplicationDbContext context)
+        public BookTypeController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: KhachHang
+        // GET: BookType
         public async Task<IActionResult> Index()
         {
-              return _context.KhachHang != null ? 
-                          View(await _context.KhachHang.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.KhachHang'  is null.");
+            var applicationDbContext = _context.BookType.Include(b => b.Language);
+            return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: KhachHang/Details/5
+        // GET: BookType/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.KhachHang == null)
+            if (id == null || _context.BookType == null)
             {
                 return NotFound();
             }
 
-            var khachHang = await _context.KhachHang
-                .FirstOrDefaultAsync(m => m.CodeKhachHang == id);
-            if (khachHang == null)
+            var bookType = await _context.BookType
+                .Include(b => b.Language)
+                .FirstOrDefaultAsync(m => m.BookID == id);
+            if (bookType == null)
             {
                 return NotFound();
             }
 
-            return View(khachHang);
+            return View(bookType);
         }
 
-        // GET: KhachHang/Create
+        // GET: BookType/Create
         public IActionResult Create()
         {
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID");
             return View();
         }
 
-        // POST: KhachHang/Create
+        // POST: BookType/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodeKhachHang,KhachHangName,PhoneNumber,Address")] KhachHang khachHang)
+        public async Task<IActionResult> Create([Bind("BookID,BookName,AuthorName,BookTypeName,LanguageID")] BookType bookType)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(khachHang);
+                _context.Add(bookType);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(khachHang);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", bookType.LanguageID);
+            return View(bookType);
         }
 
-        // GET: KhachHang/Edit/5
+        // GET: BookType/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.KhachHang == null)
+            if (id == null || _context.BookType == null)
             {
                 return NotFound();
             }
 
-            var khachHang = await _context.KhachHang.FindAsync(id);
-            if (khachHang == null)
+            var bookType = await _context.BookType.FindAsync(id);
+            if (bookType == null)
             {
                 return NotFound();
             }
-            return View(khachHang);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", bookType.LanguageID);
+            return View(bookType);
         }
 
-        // POST: KhachHang/Edit/5
+        // POST: BookType/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CodeKhachHang,KhachHangName,PhoneNumber,Address")] KhachHang khachHang)
+        public async Task<IActionResult> Edit(string id, [Bind("BookID,BookName,AuthorName,BookTypeName,LanguageID")] BookType bookType)
         {
-            if (id != khachHang.CodeKhachHang)
+            if (id != bookType.BookID)
             {
                 return NotFound();
             }
@@ -99,12 +102,12 @@ namespace Super_Book_Store.Controllers
             {
                 try
                 {
-                    _context.Update(khachHang);
+                    _context.Update(bookType);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KhachHangExists(khachHang.CodeKhachHang))
+                    if (!BookTypeExists(bookType.BookID))
                     {
                         return NotFound();
                     }
@@ -115,49 +118,51 @@ namespace Super_Book_Store.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(khachHang);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", bookType.LanguageID);
+            return View(bookType);
         }
 
-        // GET: KhachHang/Delete/5
+        // GET: BookType/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.KhachHang == null)
+            if (id == null || _context.BookType == null)
             {
                 return NotFound();
             }
 
-            var khachHang = await _context.KhachHang
-                .FirstOrDefaultAsync(m => m.CodeKhachHang == id);
-            if (khachHang == null)
+            var bookType = await _context.BookType
+                .Include(b => b.Language)
+                .FirstOrDefaultAsync(m => m.BookID == id);
+            if (bookType == null)
             {
                 return NotFound();
             }
 
-            return View(khachHang);
+            return View(bookType);
         }
 
-        // POST: KhachHang/Delete/5
+        // POST: BookType/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.KhachHang == null)
+            if (_context.BookType == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.KhachHang'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.BookType'  is null.");
             }
-            var khachHang = await _context.KhachHang.FindAsync(id);
-            if (khachHang != null)
+            var bookType = await _context.BookType.FindAsync(id);
+            if (bookType != null)
             {
-                _context.KhachHang.Remove(khachHang);
+                _context.BookType.Remove(bookType);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KhachHangExists(string id)
+        private bool BookTypeExists(string id)
         {
-          return (_context.KhachHang?.Any(e => e.CodeKhachHang == id)).GetValueOrDefault();
+          return (_context.BookType?.Any(e => e.BookID == id)).GetValueOrDefault();
         }
     }
 }

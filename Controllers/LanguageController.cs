@@ -10,87 +10,87 @@ using Super_Book_Store.Models;
 
 namespace Super_Book_Store.Controllers
 {
-    public class SachController : Controller
+    public class LanguageController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public SachController(ApplicationDbContext context)
+        public LanguageController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Sach
+        // GET: Language
         public async Task<IActionResult> Index()
         {
-              return _context.Sach != null ? 
-                          View(await _context.Sach.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Sach'  is null.");
+              return _context.Language != null ? 
+                          View(await _context.Language.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Language'  is null.");
         }
 
-        // GET: Sach/Details/5
+        // GET: Language/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Sach == null)
+            if (id == null || _context.Language == null)
             {
                 return NotFound();
             }
 
-            var sach = await _context.Sach
-                .FirstOrDefaultAsync(m => m.SachID == id);
-            if (sach == null)
+            var language = await _context.Language
+                .FirstOrDefaultAsync(m => m.LanguageID == id);
+            if (language == null)
             {
                 return NotFound();
             }
 
-            return View(sach);
+            return View(language);
         }
 
-        // GET: Sach/Create
+        // GET: Language/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Sach/Create
+        // POST: Language/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SachID,SachName")] Sach sach)
+        public async Task<IActionResult> Create([Bind("LanguageID,LanguageName")] Language language)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(sach);
+                _context.Add(language);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(sach);
+            return View(language);
         }
 
-        // GET: Sach/Edit/5
+        // GET: Language/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Sach == null)
+            if (id == null || _context.Language == null)
             {
                 return NotFound();
             }
 
-            var sach = await _context.Sach.FindAsync(id);
-            if (sach == null)
+            var language = await _context.Language.FindAsync(id);
+            if (language == null)
             {
                 return NotFound();
             }
-            return View(sach);
+            return View(language);
         }
 
-        // POST: Sach/Edit/5
+        // POST: Language/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("SachID,SachName")] Sach sach)
+        public async Task<IActionResult> Edit(string id, [Bind("LanguageID,LanguageName")] Language language)
         {
-            if (id != sach.SachID)
+            if (id != language.LanguageID)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace Super_Book_Store.Controllers
             {
                 try
                 {
-                    _context.Update(sach);
+                    _context.Update(language);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SachExists(sach.SachID))
+                    if (!LanguageExists(language.LanguageID))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace Super_Book_Store.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(sach);
+            return View(language);
         }
 
-        // GET: Sach/Delete/5
+        // GET: Language/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Sach == null)
+            if (id == null || _context.Language == null)
             {
                 return NotFound();
             }
 
-            var sach = await _context.Sach
-                .FirstOrDefaultAsync(m => m.SachID == id);
-            if (sach == null)
+            var language = await _context.Language
+                .FirstOrDefaultAsync(m => m.LanguageID == id);
+            if (language == null)
             {
                 return NotFound();
             }
 
-            return View(sach);
+            return View(language);
         }
 
-        // POST: Sach/Delete/5
+        // POST: Language/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Sach == null)
+            if (_context.Language == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Sach'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Language'  is null.");
             }
-            var sach = await _context.Sach.FindAsync(id);
-            if (sach != null)
+            var language = await _context.Language.FindAsync(id);
+            if (language != null)
             {
-                _context.Sach.Remove(sach);
+                _context.Language.Remove(language);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SachExists(string id)
+        private bool LanguageExists(string id)
         {
-          return (_context.Sach?.Any(e => e.SachID == id)).GetValueOrDefault();
+          return (_context.Language?.Any(e => e.LanguageID == id)).GetValueOrDefault();
         }
     }
 }

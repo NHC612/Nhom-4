@@ -10,8 +10,8 @@ using Super_Book_Store.Data;
 namespace Super_Book_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230512113150_Create_Table_Kho")]
-    partial class Create_Table_Kho
+    [Migration("20230515111411_Create_Table_Language")]
+    partial class Create_Table_Language
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace Super_Book_Store.Migrations
 
             modelBuilder.Entity("Super_Book_Store.Models.KhachHang", b =>
                 {
-                    b.Property<string>("KhachHangID")
+                    b.Property<string>("CodeKhachHang")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Address")
@@ -32,10 +32,11 @@ namespace Super_Book_Store.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.HasKey("KhachHangID");
+                    b.HasKey("CodeKhachHang");
 
                     b.ToTable("KhachHang");
                 });
@@ -60,6 +61,34 @@ namespace Super_Book_Store.Migrations
                     b.HasKey("BookName");
 
                     b.ToTable("Kho");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.Language", b =>
+                {
+                    b.Property<string>("LanguageID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LanguageName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LanguageID");
+
+                    b.ToTable("Language");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.NhaXuatBan", b =>
+                {
+                    b.Property<string>("NXBName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("NXBName");
+
+                    b.ToTable("NhaXuatBan");
                 });
 #pragma warning restore 612, 618
         }

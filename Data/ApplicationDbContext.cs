@@ -18,7 +18,11 @@ namespace Super_Book_Store.Data
 
         public DbSet<Super_Book_Store.Models.NhaXuatBan> NhaXuatBan { get; set; } = default!;
 
-        public DbSet<Super_Book_Store.Models.Sach> Sach { get; set; } = default!;
+        public DbSet<Super_Book_Store.Models.Language> Language { get; set; } = default!;
+
+        public DbSet<Super_Book_Store.Models.BookType> BookType { get; set; } = default!;
+
+        public DbSet<Super_Book_Store.Models.NhanVien> NhanVien { get; set; } = default!;
        
 
         

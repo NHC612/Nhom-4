@@ -5,7 +5,7 @@
 namespace Super_Book_Store.Migrations
 {
     /// <inheritdoc />
-    public partial class Create_Table_Kho : Migration
+    public partial class Create_ForeignKey_BookType : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

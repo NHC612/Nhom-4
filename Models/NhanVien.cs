@@ -4,13 +4,15 @@ using System.ComponentModel.DataAnnotations;
 namespace Super_Book_Store.Models
 {
     
-    public class KhachHang
+    public class NhanVien
     {
         [Key]
-        public string CodeKhachHang {get; set; }
-        public string KhachHangName {get; set; }
+        public string NhanVienID {get; set; }
+        public string NhanVienName {get; set; }
+        public string Sex {get; set; }
         public string PhoneNumber {get; set; }
         public string Address {get; set; }
+        
         
         
         

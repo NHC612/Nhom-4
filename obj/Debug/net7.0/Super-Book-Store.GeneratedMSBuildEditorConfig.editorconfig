@@ -16,6 +16,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = c:\Users\Nitro\Desktop\Super-Book-Store\Super-Book-Store\Nhom-4\Super-Book-Store
 build_property._RazorSourceGeneratorDebug = 
 
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/BookType/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1R5cGVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/BookType/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1R5cGVcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/BookType/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1R5cGVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/BookType/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1R5cGVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/BookType/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1R5cGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,10 +64,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hhY2hIYW5nXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/KhachHang/Upload.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hhY2hIYW5nXFVwbG9hZC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Kho/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -68,6 +84,46 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Language/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Language/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Language/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Language/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Language/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/NhanVien/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhblZpZW5cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/NhanVien/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhblZpZW5cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/NhanVien/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhblZpZW5cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/NhanVien/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhblZpZW5cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/NhanVien/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhblZpZW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/NhaXuatBan/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhWHVhdEJhblxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -86,26 +142,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/NhaXuatBan/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhWHVhdEJhblxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Sach/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaFxDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Sach/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaFxEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Sach/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaFxEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Sach/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaFxFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Sach/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [c:/Users/Nitro/Desktop/Super-Book-Store/Super-Book-Store/Nhom-4/Super-Book-Store/Views/Shared/Error.cshtml]

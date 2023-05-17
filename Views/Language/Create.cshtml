@@ -1,4 +1,4 @@
-@model Super_Book_Store.Models.Sach
+@model Super_Book_Store.Models.Language
 
 @{
     ViewData["Title"] = "Create";
@@ -6,21 +6,21 @@
 
 <h1>Create</h1>
 
-<h4>Sach</h4>
+<h4>Language</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="SachID" class="control-label"></label>
-                <input asp-for="SachID" class="form-control" />
-                <span asp-validation-for="SachID" class="text-danger"></span>
+                <label asp-for="LanguageID" class="control-label"></label>
+                <input asp-for="LanguageID" class="form-control" />
+                <span asp-validation-for="LanguageID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SachName" class="control-label"></label>
-                <input asp-for="SachName" class="form-control" />
-                <span asp-validation-for="SachName" class="text-danger"></span>
+                <label asp-for="LanguageName" class="control-label"></label>
+                <input asp-for="LanguageName" class="form-control" />
+                <span asp-validation-for="LanguageName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

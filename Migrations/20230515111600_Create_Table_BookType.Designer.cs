@@ -10,14 +10,42 @@ using Super_Book_Store.Data;
 namespace Super_Book_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230512115614_Create_Table_NhaXuatBan")]
-    partial class Create_Table_NhaXuatBan
+    [Migration("20230515111600_Create_Table_BookType")]
+    partial class Create_Table_BookType
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
+
+            modelBuilder.Entity("Super_Book_Store.Models.BookType", b =>
+                {
+                    b.Property<string>("BookID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("BookName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("BookTypeName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LanguageID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("BookID");
+
+                    b.HasIndex("LanguageID");
+
+                    b.ToTable("BookType");
+                });
 
             modelBuilder.Entity("Super_Book_Store.Models.KhachHang", b =>
                 {
@@ -32,8 +60,9 @@ namespace Super_Book_Store.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("CodeKhachHang");
 
@@ -62,6 +91,20 @@ namespace Super_Book_Store.Migrations
                     b.ToTable("Kho");
                 });
 
+            modelBuilder.Entity("Super_Book_Store.Models.Language", b =>
+                {
+                    b.Property<string>("LanguageID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LanguageName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LanguageID");
+
+                    b.ToTable("Language");
+                });
+
             modelBuilder.Entity("Super_Book_Store.Models.NhaXuatBan", b =>
                 {
                     b.Property<string>("NXBName")
@@ -74,6 +117,17 @@ namespace Super_Book_Store.Migrations
                     b.HasKey("NXBName");
 
                     b.ToTable("NhaXuatBan");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.BookType", b =>
+                {
+                    b.HasOne("Super_Book_Store.Models.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
                 });
 #pragma warning restore 612, 618
         }

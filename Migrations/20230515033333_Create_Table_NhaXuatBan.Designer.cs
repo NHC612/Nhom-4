@@ -10,8 +10,8 @@ using Super_Book_Store.Data;
 namespace Super_Book_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230512113949_Create_Table_KhachHang")]
-    partial class Create_Table_KhachHang
+    [Migration("20230515033333_Create_Table_NhaXuatBan")]
+    partial class Create_Table_NhaXuatBan
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,10 +32,17 @@ namespace Super_Book_Store.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SachID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("CodeKhachHang");
+
+                    b.HasIndex("SachID");
 
                     b.ToTable("KhachHang");
                 });
@@ -60,6 +67,45 @@ namespace Super_Book_Store.Migrations
                     b.HasKey("BookName");
 
                     b.ToTable("Kho");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.NhaXuatBan", b =>
+                {
+                    b.Property<string>("NXBName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("NXBName");
+
+                    b.ToTable("NhaXuatBan");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.Sach", b =>
+                {
+                    b.Property<string>("SachID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SachName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("SachID");
+
+                    b.ToTable("Sach");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.KhachHang", b =>
+                {
+                    b.HasOne("Super_Book_Store.Models.Sach", "Sach")
+                        .WithMany()
+                        .HasForeignKey("SachID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Sach");
                 });
 #pragma warning restore 612, 618
         }

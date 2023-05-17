@@ -3,13 +3,12 @@ using System.ComponentModel.DataAnnotations;
 namespace Super_Book_Store.Models
 {
     
-    public class Sach
+    public class Language
     {
         [Key]
-        public string SachID {get; set; }
+        public string LanguageID {get; set; }
         
-        public string SachName {get; set; }
-        
+        public string  LanguageName {get; set; }
         
     }
 }

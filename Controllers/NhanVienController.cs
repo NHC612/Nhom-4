@@ -10,87 +10,87 @@ using Super_Book_Store.Models;
 
 namespace Super_Book_Store.Controllers
 {
-    public class KhachHangController : Controller
+    public class NhanVienController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public KhachHangController(ApplicationDbContext context)
+        public NhanVienController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: KhachHang
+        // GET: NhanVien
         public async Task<IActionResult> Index()
         {
-              return _context.KhachHang != null ? 
-                          View(await _context.KhachHang.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.KhachHang'  is null.");
+              return _context.NhanVien != null ? 
+                          View(await _context.NhanVien.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.NhanVien'  is null.");
         }
 
-        // GET: KhachHang/Details/5
+        // GET: NhanVien/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.KhachHang == null)
+            if (id == null || _context.NhanVien == null)
             {
                 return NotFound();
             }
 
-            var khachHang = await _context.KhachHang
-                .FirstOrDefaultAsync(m => m.CodeKhachHang == id);
-            if (khachHang == null)
+            var nhanVien = await _context.NhanVien
+                .FirstOrDefaultAsync(m => m.NhanVienID == id);
+            if (nhanVien == null)
             {
                 return NotFound();
             }
 
-            return View(khachHang);
+            return View(nhanVien);
         }
 
-        // GET: KhachHang/Create
+        // GET: NhanVien/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: KhachHang/Create
+        // POST: NhanVien/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodeKhachHang,KhachHangName,PhoneNumber,Address")] KhachHang khachHang)
+        public async Task<IActionResult> Create([Bind("NhanVienID,NhanVienName,Sex,PhoneNumber,Address")] NhanVien nhanVien)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(khachHang);
+                _context.Add(nhanVien);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(khachHang);
+            return View(nhanVien);
         }
 
-        // GET: KhachHang/Edit/5
+        // GET: NhanVien/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.KhachHang == null)
+            if (id == null || _context.NhanVien == null)
             {
                 return NotFound();
             }
 
-            var khachHang = await _context.KhachHang.FindAsync(id);
-            if (khachHang == null)
+            var nhanVien = await _context.NhanVien.FindAsync(id);
+            if (nhanVien == null)
             {
                 return NotFound();
             }
-            return View(khachHang);
+            return View(nhanVien);
         }
 
-        // POST: KhachHang/Edit/5
+        // POST: NhanVien/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CodeKhachHang,KhachHangName,PhoneNumber,Address")] KhachHang khachHang)
+        public async Task<IActionResult> Edit(string id, [Bind("NhanVienID,NhanVienName,Sex,PhoneNumber,Address")] NhanVien nhanVien)
         {
-            if (id != khachHang.CodeKhachHang)
+            if (id != nhanVien.NhanVienID)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace Super_Book_Store.Controllers
             {
                 try
                 {
-                    _context.Update(khachHang);
+                    _context.Update(nhanVien);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KhachHangExists(khachHang.CodeKhachHang))
+                    if (!NhanVienExists(nhanVien.NhanVienID))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace Super_Book_Store.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(khachHang);
+            return View(nhanVien);
         }
 
-        // GET: KhachHang/Delete/5
+        // GET: NhanVien/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.KhachHang == null)
+            if (id == null || _context.NhanVien == null)
             {
                 return NotFound();
             }
 
-            var khachHang = await _context.KhachHang
-                .FirstOrDefaultAsync(m => m.CodeKhachHang == id);
-            if (khachHang == null)
+            var nhanVien = await _context.NhanVien
+                .FirstOrDefaultAsync(m => m.NhanVienID == id);
+            if (nhanVien == null)
             {
                 return NotFound();
             }
 
-            return View(khachHang);
+            return View(nhanVien);
         }
 
-        // POST: KhachHang/Delete/5
+        // POST: NhanVien/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.KhachHang == null)
+            if (_context.NhanVien == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.KhachHang'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.NhanVien'  is null.");
             }
-            var khachHang = await _context.KhachHang.FindAsync(id);
-            if (khachHang != null)
+            var nhanVien = await _context.NhanVien.FindAsync(id);
+            if (nhanVien != null)
             {
-                _context.KhachHang.Remove(khachHang);
+                _context.NhanVien.Remove(nhanVien);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KhachHangExists(string id)
+        private bool NhanVienExists(string id)
         {
-          return (_context.KhachHang?.Any(e => e.CodeKhachHang == id)).GetValueOrDefault();
+          return (_context.NhanVien?.Any(e => e.NhanVienID == id)).GetValueOrDefault();
         }
     }
 }

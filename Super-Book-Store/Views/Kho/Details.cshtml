@@ -1,0 +1,42 @@
+@model Super_Book_Store.Models.Kho
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Kho</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumberbBook)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumberbBook)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BookStoreExists)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BookStoreExists)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.InventoryBook)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.InventoryBook)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ExportBook)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ExportBook)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.BookName">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

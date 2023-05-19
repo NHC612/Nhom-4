@@ -9,61 +9,81 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Super_Book_Store
 build_property.RootNamespace = Super_Book_Store
-build_property.ProjectDir = d:\BTL_NHOM4\Nhom-4\Super-Book-Store\
+build_property.ProjectDir = C:\Users\ASUS\OneDrive\Máy tính\BTL_PTPMQL\Nhom-4\Super-Book-Store\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = d:\BTL_NHOM4\Nhom-4\Super-Book-Store
+build_property.MSBuildProjectDirectory = C:\Users\ASUS\OneDrive\Máy tính\BTL_PTPMQL\Nhom-4\Super-Book-Store
 build_property._RazorSourceGeneratorDebug = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/Home/Index.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/Home/Privacy.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/Kho/Create.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Kho/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/Kho/Delete.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Kho/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/Kho/Details.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Kho/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/Kho/Edit.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Kho/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/Kho/Index.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Kho/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/Kho/Upload.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Kho/Upload.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2hvXFVwbG9hZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/Shared/Error.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Language/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Language/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Language/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Language/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Language/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuZ3VhZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/_ViewImports.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/_ViewStart.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/BTL_NHOM4/Nhom-4/Super-Book-Store/Views/Shared/_Layout.cshtml]
+[C:/Users/ASUS/OneDrive/Máy tính/BTL_PTPMQL/Nhom-4/Super-Book-Store/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-s8zcd5ehhc

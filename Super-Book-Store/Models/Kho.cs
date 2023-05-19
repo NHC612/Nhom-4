@@ -7,6 +7,7 @@ namespace Super_Book_Store.Models
     public class Kho
     {
         [Key]
+        public string BookID {get; set; }
         public string BookName {get; set; }
         public string NumberbBook {get; set; }
         public string BookStoreExists{get; set; }

@@ -13,4 +13,6 @@ using Super_Book_Store.Models;
         }
 
         public DbSet<Super_Book_Store.Models.Kho> Kho { get; set; } = default!;
+
+        public DbSet<Super_Book_Store.Models.Language> Language { get; set; } = default!;
     }

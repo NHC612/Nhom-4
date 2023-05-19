@@ -10503,11 +10503,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\BTL_NHOM4\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj",
       "projectName": "Super-Book-Store",
-      "projectPath": "D:\\BTL_NHOM4\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj",
+      "projectPath": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\BTL_NHOM4\\Nhom-4\\Super-Book-Store\\obj\\",
+      "outputPath": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"

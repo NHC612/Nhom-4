@@ -14,6 +14,7 @@ namespace Super_Book_Store.Migrations
                 name: "Khoss",
                 columns: table => new
                 {
+                    BookID = table.Column<string>(type: "TEXT", nullable: false),
                     BookName = table.Column<string>(type: "TEXT", nullable: false),
                     NumberbBook = table.Column<string>(type: "TEXT", nullable: false),
                     BookStoreExists = table.Column<string>(type: "TEXT", nullable: false),
@@ -22,7 +23,7 @@ namespace Super_Book_Store.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Khoss", x => x.BookName);
+                    table.PrimaryKey("PK_Khoss", x => x.BookID);
                 });
         }
 

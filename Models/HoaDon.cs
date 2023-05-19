@@ -3,13 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Super_Book_Store.Models
 {
-    [Table("KhachHang")]
-    public class KhachHang
+    [Table("HoaDon")]
+    public class HoaDon
     {
         [Key]
-        public string KhachHangID {get; set; }
+        public string HoaDonID {get; set; }
         public string KhachHangName {get; set; }
-        public string Sex {get; set; }
+         [ForeignKey("KhachHangName")]
+        public KhachHang? KhachHang {get; set; }
         public string BookNameID {get; set; }
         [ForeignKey("BookNameID")]
         public Kho? Kho {get; set; }
@@ -17,8 +18,9 @@ namespace Super_Book_Store.Models
         [ForeignKey("LanguageID")]
         
         public Language? Language { get; set; }
-        public string PhoneNumber{get; set; }
-        public string Address{get; set; }
+        public string Address {get; set; }
+        
+
         
     }
 }

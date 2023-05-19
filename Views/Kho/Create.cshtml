@@ -13,29 +13,34 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="BookID" class="control-label"></label>
+                <input asp-for="BookID" class="form-control" />
+                <span asp-validation-for="BookID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="BookName" class="control-label"></label>
                 <input asp-for="BookName" class="form-control" />
                 <span asp-validation-for="BookName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SoLuong" class="control-label"></label>
-                <input asp-for="SoLuong" class="form-control" />
-                <span asp-validation-for="SoLuong" class="text-danger"></span>
+                <label asp-for="NumberbBook" class="control-label"></label>
+                <input asp-for="NumberbBook" class="form-control" />
+                <span asp-validation-for="NumberbBook" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TonKho" class="control-label"></label>
-                <input asp-for="TonKho" class="form-control" />
-                <span asp-validation-for="TonKho" class="text-danger"></span>
+                <label asp-for="BookStoreExists" class="control-label"></label>
+                <input asp-for="BookStoreExists" class="form-control" />
+                <span asp-validation-for="BookStoreExists" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NhapKho" class="control-label"></label>
-                <input asp-for="NhapKho" class="form-control" />
-                <span asp-validation-for="NhapKho" class="text-danger"></span>
+                <label asp-for="InventoryBook" class="control-label"></label>
+                <input asp-for="InventoryBook" class="form-control" />
+                <span asp-validation-for="InventoryBook" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="XuatKho" class="control-label"></label>
-                <input asp-for="XuatKho" class="form-control" />
-                <span asp-validation-for="XuatKho" class="text-danger"></span>
+                <label asp-for="ExportBook" class="control-label"></label>
+                <input asp-for="ExportBook" class="form-control" />
+                <span asp-validation-for="ExportBook" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

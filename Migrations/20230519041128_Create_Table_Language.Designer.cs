@@ -10,8 +10,8 @@ using Super_Book_Store.Data;
 namespace Super_Book_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230515033333_Create_Table_NhaXuatBan")]
-    partial class Create_Table_NhaXuatBan
+    [Migration("20230519041128_Create_Table_Language")]
+    partial class Create_Table_Language
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,76 +36,79 @@ namespace Super_Book_Store.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SachID")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("CodeKhachHang");
-
-                    b.HasIndex("SachID");
 
                     b.ToTable("KhachHang");
                 });
 
             modelBuilder.Entity("Super_Book_Store.Models.Kho", b =>
                 {
-                    b.Property<string>("BookName")
+                    b.Property<string>("BookID")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("NhapKho")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("BookName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("SoLuong")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("BookStoreExists")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("TonKho")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("ExportBook")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("XuatKho")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("InventoryBook")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.HasKey("BookName");
+                    b.Property<string>("NumberbBook")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.ToTable("Kho");
+                    b.HasKey("BookID");
+
+                    b.ToTable("Khoss");
                 });
 
-            modelBuilder.Entity("Super_Book_Store.Models.NhaXuatBan", b =>
+            modelBuilder.Entity("Super_Book_Store.Models.Language", b =>
                 {
-                    b.Property<string>("NXBName")
+                    b.Property<string>("LanguageID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LanguageName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LanguageID");
+
+                    b.ToTable("Language");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.NhanVien", b =>
+                {
+                    b.Property<string>("NhanVienID")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("NXBName");
-
-                    b.ToTable("NhaXuatBan");
-                });
-
-            modelBuilder.Entity("Super_Book_Store.Models.Sach", b =>
-                {
-                    b.Property<string>("SachID")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SachName")
+                    b.Property<string>("NhanVienName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("SachID");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.ToTable("Sach");
-                });
+                    b.Property<string>("Sex")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-            modelBuilder.Entity("Super_Book_Store.Models.KhachHang", b =>
-                {
-                    b.HasOne("Super_Book_Store.Models.Sach", "Sach")
-                        .WithMany()
-                        .HasForeignKey("SachID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasKey("NhanVienID");
 
-                    b.Navigation("Sach");
+                    b.ToTable("NhanVien");
                 });
 #pragma warning restore 612, 618
         }

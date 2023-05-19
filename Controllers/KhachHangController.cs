@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Super_Book_Store.Data;
 using Super_Book_Store.Models;
+using Super_Book_Store.Models.Process;
 
 namespace Super_Book_Store.Controllers
 {
     public class KhachHangController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private StringProcess strPro = new StringProcess();
 
         public KhachHangController(ApplicationDbContext context)
         {
@@ -22,9 +24,8 @@ namespace Super_Book_Store.Controllers
         // GET: KhachHang
         public async Task<IActionResult> Index()
         {
-              return _context.KhachHang != null ? 
-                          View(await _context.KhachHang.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.KhachHang'  is null.");
+            var applicationDbContext = _context.KhachHang.Include(k => k.Kho).Include(k => k.Language);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: KhachHang/Details/5
@@ -36,7 +37,9 @@ namespace Super_Book_Store.Controllers
             }
 
             var khachHang = await _context.KhachHang
-                .FirstOrDefaultAsync(m => m.CodeKhachHang == id);
+                .Include(k => k.Kho)
+                .Include(k => k.Language)
+                .FirstOrDefaultAsync(m => m.KhachHangID == id);
             if (khachHang == null)
             {
                 return NotFound();
@@ -48,7 +51,9 @@ namespace Super_Book_Store.Controllers
         // GET: KhachHang/Create
         public IActionResult Create()
         {
-            return View();
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID");
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID");
+
         }
 
         // POST: KhachHang/Create
@@ -56,7 +61,7 @@ namespace Super_Book_Store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodeKhachHang,KhachHangName,PhoneNumber,Address")] KhachHang khachHang)
+        public async Task<IActionResult> Create([Bind("KhachHangID,KhachHangName,Sex,BookNameID,LanguageID,PhoneNumber,Address")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +69,8 @@ namespace Super_Book_Store.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID", khachHang.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", khachHang.LanguageID);
             return View(khachHang);
         }
 
@@ -80,6 +87,8 @@ namespace Super_Book_Store.Controllers
             {
                 return NotFound();
             }
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID", khachHang.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", khachHang.LanguageID);
             return View(khachHang);
         }
 
@@ -88,9 +97,9 @@ namespace Super_Book_Store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CodeKhachHang,KhachHangName,PhoneNumber,Address")] KhachHang khachHang)
+        public async Task<IActionResult> Edit(string id, [Bind("KhachHangID,KhachHangName,Sex,BookNameID,LanguageID,PhoneNumber,Address")] KhachHang khachHang)
         {
-            if (id != khachHang.CodeKhachHang)
+            if (id != khachHang.KhachHangID)
             {
                 return NotFound();
             }
@@ -104,7 +113,7 @@ namespace Super_Book_Store.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KhachHangExists(khachHang.CodeKhachHang))
+                    if (!KhachHangExists(khachHang.KhachHangID))
                     {
                         return NotFound();
                     }
@@ -115,6 +124,8 @@ namespace Super_Book_Store.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID", khachHang.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", khachHang.LanguageID);
             return View(khachHang);
         }
 
@@ -127,7 +138,9 @@ namespace Super_Book_Store.Controllers
             }
 
             var khachHang = await _context.KhachHang
-                .FirstOrDefaultAsync(m => m.CodeKhachHang == id);
+                .Include(k => k.Kho)
+                .Include(k => k.Language)
+                .FirstOrDefaultAsync(m => m.KhachHangID == id);
             if (khachHang == null)
             {
                 return NotFound();
@@ -157,7 +170,7 @@ namespace Super_Book_Store.Controllers
 
         private bool KhachHangExists(string id)
         {
-          return (_context.KhachHang?.Any(e => e.CodeKhachHang == id)).GetValueOrDefault();
+          return (_context.KhachHang?.Any(e => e.KhachHangID == id)).GetValueOrDefault();
         }
     }
 }

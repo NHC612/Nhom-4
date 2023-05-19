@@ -1,4 +1,4 @@
-@model IEnumerable<Super_Book_Store.Models.KhachHang>
+@model IEnumerable<Super_Book_Store.Models.HoaDon>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,19 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.KhachHangName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sex)
+                @Html.DisplayNameFor(model => model.KhachHang)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Kho)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Language)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Address)
@@ -37,10 +31,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.KhachHangName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sex)
+                @Html.DisplayFor(modelItem => item.KhachHang.KhachHangID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Kho.BookID)
@@ -49,15 +40,12 @@
                 @Html.DisplayFor(modelItem => item.Language.LanguageID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.KhachHangID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.KhachHangID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.KhachHangID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.HoaDonID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.HoaDonID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.HoaDonID">Delete</a>
             </td>
         </tr>
 }

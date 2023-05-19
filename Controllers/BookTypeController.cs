@@ -22,12 +22,12 @@ namespace Super_Book_Store.Controllers
         // GET: BookType
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.BookType.Include(b => b.Language);
+            var applicationDbContext = _context.BookType.Include(b => b.Kho).Include(b => b.Language);
             return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: BookType/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.BookType == null)
             {
@@ -35,6 +35,7 @@ namespace Super_Book_Store.Controllers
             }
 
             var bookType = await _context.BookType
+                .Include(b => b.Kho)
                 .Include(b => b.Language)
                 .FirstOrDefaultAsync(m => m.BookID == id);
             if (bookType == null)
@@ -48,7 +49,8 @@ namespace Super_Book_Store.Controllers
         // GET: BookType/Create
         public IActionResult Create()
         {
-            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID");
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookName");
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageName");
             return View();
         }
 
@@ -57,7 +59,7 @@ namespace Super_Book_Store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookID,BookName,AuthorName,BookTypeName,LanguageID")] BookType bookType)
+        public async Task<IActionResult> Create([Bind("BookID,BookNameID,BookTypeNew,AuthorName,LanguageID")] BookType bookType)
         {
             if (ModelState.IsValid)
             {
@@ -65,12 +67,13 @@ namespace Super_Book_Store.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", bookType.LanguageID);
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookName", bookType.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageName", bookType.LanguageID);
             return View(bookType);
         }
 
         // GET: BookType/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.BookType == null)
             {
@@ -82,7 +85,8 @@ namespace Super_Book_Store.Controllers
             {
                 return NotFound();
             }
-            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", bookType.LanguageID);
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookName", bookType.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageName", bookType.LanguageID);
             return View(bookType);
         }
 
@@ -91,7 +95,7 @@ namespace Super_Book_Store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("BookID,BookName,AuthorName,BookTypeName,LanguageID")] BookType bookType)
+        public async Task<IActionResult> Edit(int id, [Bind("BookID,BookNameID,BookTypeNew,AuthorName,LanguageID")] BookType bookType)
         {
             if (id != bookType.BookID)
             {
@@ -118,12 +122,13 @@ namespace Super_Book_Store.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", bookType.LanguageID);
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookName", bookType.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageName", bookType.LanguageID);
             return View(bookType);
         }
 
         // GET: BookType/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.BookType == null)
             {
@@ -131,6 +136,7 @@ namespace Super_Book_Store.Controllers
             }
 
             var bookType = await _context.BookType
+                .Include(b => b.Kho)
                 .Include(b => b.Language)
                 .FirstOrDefaultAsync(m => m.BookID == id);
             if (bookType == null)
@@ -144,7 +150,7 @@ namespace Super_Book_Store.Controllers
         // POST: BookType/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.BookType == null)
             {
@@ -160,7 +166,7 @@ namespace Super_Book_Store.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BookTypeExists(string id)
+        private bool BookTypeExists(int id)
         {
           return (_context.BookType?.Any(e => e.BookID == id)).GetValueOrDefault();
         }

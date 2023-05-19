@@ -8,15 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Super_Book_Store.Models;
 using Super_Book_Store.Models.Process;
 
-
 namespace Super_Book_Store.Controllers
 {
     public class KhoController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private ExcelProcess _excelProcess = new ExcelProcess();
+         private ExcelProcess _excelProcess = new ExcelProcess();
 
-        // StringProcess mtd = new StringProcess();
         public KhoController(ApplicationDbContext context)
         {
             _context = context;
@@ -39,7 +37,7 @@ namespace Super_Book_Store.Controllers
             }
 
             var kho = await _context.Kho
-                .FirstOrDefaultAsync(m => m.BookName == id);
+                .FirstOrDefaultAsync(m => m.BookID == id);
             if (kho == null)
             {
                 return NotFound();
@@ -50,28 +48,16 @@ namespace Super_Book_Store.Controllers
 
         // GET: Kho/Create
         public IActionResult Create()
-                {
-                    // var newID = "";
-                    // if (_context.Kho.Count() == 0)
-                    // {
-                    //     newID = "SP001";
-                    // }
-                    // else
-                    // {
-                    //     var id = _context.Kho.OrderByDescending(m => m.BookName).First().BookName;
-                    //     newID = mtd.AutoGenerateKey(id);
-                    // }
-                    // ViewBag.BookName = newID; 
-                    return View();
-                }
-
+        {
+            return View();
+        }
 
         // POST: Kho/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookName,NumberbBook,BookStoreExists,InventoryBook,ExportBook")] Kho kho)
+        public async Task<IActionResult> Create([Bind("BookID,BookName,NumberbBook,BookStoreExists,InventoryBook,ExportBook")] Kho kho)
         {
             if (ModelState.IsValid)
             {
@@ -103,9 +89,9 @@ namespace Super_Book_Store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("BookName,NumberbBook,BookStoreExists,InventoryBook,ExportBook")] Kho kho)
+        public async Task<IActionResult> Edit(string id, [Bind("BookID,BookName,NumberbBook,BookStoreExists,InventoryBook,ExportBook")] Kho kho)
         {
-            if (id != kho.BookName)
+            if (id != kho.BookID)
             {
                 return NotFound();
             }
@@ -119,7 +105,7 @@ namespace Super_Book_Store.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KhoExists(kho.BookName))
+                    if (!KhoExists(kho.BookID))
                     {
                         return NotFound();
                     }
@@ -142,7 +128,7 @@ namespace Super_Book_Store.Controllers
             }
 
             var kho = await _context.Kho
-                .FirstOrDefaultAsync(m => m.BookName == id);
+                .FirstOrDefaultAsync(m => m.BookID == id);
             if (kho == null)
             {
                 return NotFound();
@@ -172,10 +158,9 @@ namespace Super_Book_Store.Controllers
 
         private bool KhoExists(string id)
         {
-          return (_context.Kho?.Any(e => e.BookName == id)).GetValueOrDefault();
+          return (_context.Kho?.Any(e => e.BookID == id)).GetValueOrDefault();
         }
-        // uploading
-          public async Task<IActionResult>Upload()
+         public async Task<IActionResult>Upload()
         {
             return View();
         }
@@ -191,7 +176,7 @@ namespace Super_Book_Store.Controllers
                 }
                 else{
                     var fileName = DateTime.Now.ToShortTimeString() + fileExtension;
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Upload/Excel", fileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Upload/Excels", fileName);
                     var fileLocation = new FileInfo(filePath).ToString();
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
@@ -200,16 +185,16 @@ namespace Super_Book_Store.Controllers
                         var dt = _excelProcess.ExcelToDataTable(fileLocation);
                         for(int i = 0; i< dt.Rows.Count; i++)
                         {
-                            var emp = new Kho();
+                            var kh = new Kho();
+                            kh.BookID = dt.Rows[i][0].ToString();
+                            kh.BookName = dt.Rows[i][1].ToString();
+                            kh.NumberbBook = dt.Rows[i][2].ToString();
+                            kh.BookStoreExists = dt.Rows[i][3].ToString();
+                            kh.InventoryBook = dt.Rows[i][4].ToString();
+                            kh.ExportBook = dt.Rows[i][5].ToString();
 
-                            emp.BookName = dt.Rows[i][0].ToString();
-                            emp.NumberbBook = dt.Rows[i][1].ToString();
-                            emp.BookStoreExists = dt.Rows[i][2].ToString();
-                            emp.InventoryBook = dt.Rows[i][3].ToString();
-                            emp.ExportBook = dt.Rows[i][4].ToString();
 
-
-                            _context.Kho.Add(emp);
+                            _context.Kho.Add(kh);
                         } 
 
                         await _context.SaveChangesAsync();
@@ -221,3 +206,6 @@ namespace Super_Book_Store.Controllers
         }
     }
 }
+
+
+

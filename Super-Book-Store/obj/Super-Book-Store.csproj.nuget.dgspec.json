@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BTL_NHOM4\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj": {}
+    "C:\\Users\\Nitro\\Desktop\\TEst\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj": {}
   },
   "projects": {
-    "D:\\BTL_NHOM4\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj": {
+    "C:\\Users\\Nitro\\Desktop\\TEst\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BTL_NHOM4\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj",
+        "projectUniqueName": "C:\\Users\\Nitro\\Desktop\\TEst\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj",
         "projectName": "Super-Book-Store",
-        "projectPath": "D:\\BTL_NHOM4\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\BTL_NHOM4\\Nhom-4\\Super-Book-Store\\obj\\",
+        "projectPath": "C:\\Users\\Nitro\\Desktop\\TEst\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj",
+        "packagesPath": "C:\\Users\\Nitro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nitro\\Desktop\\TEst\\Nhom-4\\Super-Book-Store\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Nitro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -82,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

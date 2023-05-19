@@ -9,11 +9,11 @@ namespace Super_Book_Store.Models
     {
         [Key]
         public int BookID { get; set;}
-        // public string BookNameID { get; set; }
-        // [ForeignKey("BookNameID")]
-        // public BookName? BookName { get; set; }  
-        public string AuthorName { get; set; }
+        public string BookNameID { get; set; }
+        [ForeignKey("BookNameID")]
+        public Kho? Kho { get; set; }  
         public string BookTypeNew { get; set; }
+        public string AuthorName { get; set; }
         public string LanguageID { get; set; }
         [ForeignKey("LanguageID")]
         

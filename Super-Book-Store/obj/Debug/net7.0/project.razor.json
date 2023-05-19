@@ -18670,8 +18670,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\Views\\BookType\\Index.cshtml",
+      "TargetPath": "Views\\BookType\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\Views\\BookType\\Create.cshtml",
+      "TargetPath": "Views\\BookType\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18725,13 +18735,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\Views\\BookType\\Delete.cshtml",
+      "TargetPath": "Views\\BookType\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\Views\\BookType\\Edit.cshtml",
+      "TargetPath": "Views\\BookType\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\Views\\Language\\Edit.cshtml",
       "TargetPath": "Views\\Language\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\Views\\BookType\\Details.cshtml",
+      "TargetPath": "Views\\BookType\\Details.cshtml",
       "FileKind": "mvc"
     }
   ],

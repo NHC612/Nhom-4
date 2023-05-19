@@ -20,3 +20,13 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* css navbars*/
+a.nav-link.text-dark.items {
+    display: none;
+}
+ li.nav-item:hover a.nav-link.text-dark.items{
+  display: block !important;
+  position: absolute;
+}
+

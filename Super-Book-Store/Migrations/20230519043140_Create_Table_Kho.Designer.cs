@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Super_Book_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230519033341_Create_Table_Kho")]
+    [Migration("20230519043140_Create_Table_Kho")]
     partial class Create_Table_Kho
     {
         /// <inheritdoc />
@@ -46,6 +46,20 @@ namespace Super_Book_Store.Migrations
                     b.HasKey("BookID");
 
                     b.ToTable("Khoss");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.Language", b =>
+                {
+                    b.Property<string>("LanguageID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LanguageName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LanguageID");
+
+                    b.ToTable("Language");
                 });
 #pragma warning restore 612, 618
         }

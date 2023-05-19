@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Super_Book_Store.Models;
 using Super_Book_Store.Models.Process;
-
-
 namespace Super_Book_Store.Controllers
 {
     public class KhoController : Controller
@@ -189,16 +187,17 @@ namespace Super_Book_Store.Controllers
                         var dt = _excelProcess.ExcelToDataTable(fileLocation);
                         for(int i = 0; i< dt.Rows.Count; i++)
                         {
-                            var kh = new Kho();
-                            kh.BookID = dt.Rows[i][0].ToString();
-                            kh.BookName = dt.Rows[i][1].ToString();
-                            kh.NumberbBook = dt.Rows[i][2].ToString();
-                            kh.BookStoreExists = dt.Rows[i][3].ToString();
-                            kh.InventoryBook = dt.Rows[i][4].ToString();
-                            kh.ExportBook = dt.Rows[i][5].ToString();
+                            var emp = new Kho();
+
+                            emp.BookID = dt.Rows[i][0].ToString();
+                            emp.BookName = dt.Rows[i][1].ToString();
+                            emp.NumberbBook = dt.Rows[i][2].ToString();
+                            emp.BookStoreExists = dt.Rows[i][3].ToString();
+                            emp.InventoryBook = dt.Rows[i][4].ToString();
+                            emp.ExportBook = dt.Rows[i][5].ToString();
 
 
-                            _context.Kho.Add(kh);
+                            _context.Kho.Add(emp);
                         } 
 
                         await _context.SaveChangesAsync();

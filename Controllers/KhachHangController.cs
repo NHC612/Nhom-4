@@ -7,14 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Super_Book_Store.Data;
 using Super_Book_Store.Models;
-using Super_Book_Store.Models.Process;
 
 namespace Super_Book_Store.Controllers
 {
     public class KhachHangController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private StringProcess strPro = new StringProcess();
 
         public KhachHangController(ApplicationDbContext context)
         {
@@ -53,7 +51,7 @@ namespace Super_Book_Store.Controllers
         {
             ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID");
             ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID");
-
+            return View();
         }
 
         // POST: KhachHang/Create

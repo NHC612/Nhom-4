@@ -10,7 +10,7 @@ using Super_Book_Store.Data;
 namespace Super_Book_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230519045236_Create_Table_KhachHang")]
+    [Migration("20230519105332_Create_Table_KhachHang")]
     partial class Create_Table_KhachHang
     {
         /// <inheritdoc />
@@ -48,6 +48,38 @@ namespace Super_Book_Store.Migrations
                     b.HasIndex("LanguageID");
 
                     b.ToTable("BookType");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.HoaDon", b =>
+                {
+                    b.Property<string>("HoaDonID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("BookNameID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("KhachHangName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LanguageID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("HoaDonID");
+
+                    b.HasIndex("BookNameID");
+
+                    b.HasIndex("KhachHangName");
+
+                    b.HasIndex("LanguageID");
+
+                    b.ToTable("HoaDon");
                 });
 
             modelBuilder.Entity("Super_Book_Store.Models.KhachHang", b =>
@@ -167,6 +199,33 @@ namespace Super_Book_Store.Migrations
                         .HasForeignKey("LanguageID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Kho");
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.HoaDon", b =>
+                {
+                    b.HasOne("Super_Book_Store.Models.Kho", "Kho")
+                        .WithMany()
+                        .HasForeignKey("BookNameID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Super_Book_Store.Models.KhachHang", "KhachHang")
+                        .WithMany()
+                        .HasForeignKey("KhachHangName")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Super_Book_Store.Models.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("KhachHang");
 
                     b.Navigation("Kho");
 

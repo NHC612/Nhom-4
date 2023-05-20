@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Super_Book_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230519050051_Create_Table_BookType")]
-    partial class Create_Table_BookType
+    [Migration("20230520063351_Create_ForeignKey_BookType")]
+    partial class Create_ForeignKey_BookType
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,9 +20,8 @@ namespace Super_Book_Store.Migrations
 
             modelBuilder.Entity("Super_Book_Store.Models.BookType", b =>
                 {
-                    b.Property<int>("BookID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("BookID")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("AuthorName")
                         .IsRequired()

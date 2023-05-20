@@ -17,9 +17,8 @@ namespace Super_Book_Store.Migrations
 
             modelBuilder.Entity("Super_Book_Store.Models.BookType", b =>
                 {
-                    b.Property<int>("BookID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("BookID")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("AuthorName")
                         .IsRequired()

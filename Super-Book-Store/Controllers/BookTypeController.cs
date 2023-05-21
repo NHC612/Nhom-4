@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Super_Book_Store.Models;
+using Super_Book_Store.Models.Process;
 
 namespace Super_Book_Store.Controllers
 {
     public class BookTypeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        StringProcess BT = new StringProcess();
 
         public BookTypeController(ApplicationDbContext context)
         {
@@ -26,7 +28,7 @@ namespace Super_Book_Store.Controllers
         }
 
         // GET: BookType/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.BookType == null)
             {
@@ -48,8 +50,19 @@ namespace Super_Book_Store.Controllers
         // GET: BookType/Create
         public IActionResult Create()
         {
-            ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID");
-            ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID");
+               // Sinh ma tu dong
+            var newID = "";
+            if(_context.BookType.Count() == 0){
+                newID = "BT01";
+            }
+            else{
+                var BTT = _context.BookType.OrderByDescending(x=>x.BookID).First().BookID;
+                newID = BT.AutoGenerateKey(BTT);
+            }
+            ViewBag.BookID = newID;
+            // end
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID");
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID");
             return View();
         }
 
@@ -66,13 +79,13 @@ namespace Super_Book_Store.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID", bookType.BookNameID);
-            ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID", bookType.LanguageID);
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID", bookType.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", bookType.LanguageID);
             return View(bookType);
         }
 
         // GET: BookType/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.BookType == null)
             {
@@ -84,8 +97,8 @@ namespace Super_Book_Store.Controllers
             {
                 return NotFound();
             }
-            ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID", bookType.BookNameID);
-            ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID", bookType.LanguageID);
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID", bookType.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", bookType.LanguageID);
             return View(bookType);
         }
 
@@ -94,7 +107,7 @@ namespace Super_Book_Store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BookID,BookNameID,BookTypeNew,AuthorName,LanguageID")] BookType bookType)
+        public async Task<IActionResult> Edit(string id, [Bind("BookID,BookNameID,BookTypeNew,AuthorName,LanguageID")] BookType bookType)
         {
             if (id != bookType.BookID)
             {
@@ -121,13 +134,13 @@ namespace Super_Book_Store.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID", bookType.BookNameID);
-            ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID", bookType.LanguageID);
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID", bookType.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", bookType.LanguageID);
             return View(bookType);
         }
 
         // GET: BookType/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.BookType == null)
             {
@@ -149,7 +162,7 @@ namespace Super_Book_Store.Controllers
         // POST: BookType/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.BookType == null)
             {
@@ -165,7 +178,7 @@ namespace Super_Book_Store.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BookTypeExists(int id)
+        private bool BookTypeExists(string id)
         {
           return (_context.BookType?.Any(e => e.BookID == id)).GetValueOrDefault();
         }

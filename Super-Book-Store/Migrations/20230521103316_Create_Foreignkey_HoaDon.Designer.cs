@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Super_Book_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230519162248_Create_Table_BookType")]
-    partial class Create_Table_BookType
+    [Migration("20230521103316_Create_Foreignkey_HoaDon")]
+    partial class Create_Foreignkey_HoaDon
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +70,10 @@ namespace Super_Book_Store.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("NhanVienName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("HoaDonID");
 
                     b.HasIndex("BookNameID");
@@ -77,6 +81,8 @@ namespace Super_Book_Store.Migrations
                     b.HasIndex("KhachHangName");
 
                     b.HasIndex("LanguageID");
+
+                    b.HasIndex("NhanVienName");
 
                     b.ToTable("HoaDon");
                 });
@@ -224,11 +230,19 @@ namespace Super_Book_Store.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Super_Book_Store.Models.NhanVien", "NhanVien")
+                        .WithMany()
+                        .HasForeignKey("NhanVienName")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("KhachHang");
 
                     b.Navigation("Kho");
 
                     b.Navigation("Language");
+
+                    b.Navigation("NhanVien");
                 });
 
             modelBuilder.Entity("Super_Book_Store.Models.KhachHang", b =>

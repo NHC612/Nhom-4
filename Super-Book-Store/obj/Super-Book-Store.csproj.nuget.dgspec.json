@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nitro\\Desktop\\TEst\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj": {}
+    "C:\\Users\\Nitro\\Desktop\\Main BTL\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nitro\\Desktop\\TEst\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj": {
+    "C:\\Users\\Nitro\\Desktop\\Main BTL\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nitro\\Desktop\\TEst\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj",
+        "projectUniqueName": "C:\\Users\\Nitro\\Desktop\\Main BTL\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj",
         "projectName": "Super-Book-Store",
-        "projectPath": "C:\\Users\\Nitro\\Desktop\\TEst\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj",
+        "projectPath": "C:\\Users\\Nitro\\Desktop\\Main BTL\\Nhom-4\\Super-Book-Store\\Super-Book-Store.csproj",
         "packagesPath": "C:\\Users\\Nitro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nitro\\Desktop\\TEst\\Nhom-4\\Super-Book-Store\\obj\\",
+        "outputPath": "C:\\Users\\Nitro\\Desktop\\Main BTL\\Nhom-4\\Super-Book-Store\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nitro\\AppData\\Roaming\\NuGet\\NuGet.Config",

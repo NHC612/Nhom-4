@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.HoaDonID)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.KhachHang)
             </th>
             <th>
@@ -20,6 +23,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NhanVien)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Address)
@@ -38,6 +44,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Language.LanguageID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanVien.NhanVienID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Address)

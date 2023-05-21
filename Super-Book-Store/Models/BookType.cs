@@ -8,7 +8,7 @@ namespace Super_Book_Store.Models
     public class BookType
     {
         [Key]
-        public int BookID { get; set;}
+        public string BookID { get; set;}
          public string BookNameID { get; set; }
          [ForeignKey("BookNameID")]
         public Kho? Kho {get; set; }

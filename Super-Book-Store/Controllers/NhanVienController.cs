@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Super_Book_Store.Models;
+using Super_Book_Store.Models.Process;
 
 namespace Super_Book_Store.Controllers
 {
     public class NhanVienController : Controller
     {
         private readonly ApplicationDbContext _context;
+        StringProcess NV = new StringProcess();
 
         public NhanVienController(ApplicationDbContext context)
         {
@@ -47,6 +49,17 @@ namespace Super_Book_Store.Controllers
         // GET: NhanVien/Create
         public IActionResult Create()
         {
+            // Sinh ma tu dong
+            var newID = "";
+            if(_context.NhanVien.Count() == 0){
+                newID = "NV01";
+            }
+            else{
+                var SBS = _context.NhanVien.OrderByDescending(x=>x.NhanVienID).First().NhanVienID;
+                newID = NV.AutoGenerateKey(SBS);
+            }
+            ViewBag.NhanVienID = newID;
+            // end
             return View();
         }
 

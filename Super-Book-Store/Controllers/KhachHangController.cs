@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Super_Book_Store.Models;
+using Super_Book_Store.Models.Process;
 
 namespace Super_Book_Store.Controllers
 {
     public class KhachHangController : Controller
     {
         private readonly ApplicationDbContext _context;
+        StringProcess KH = new StringProcess();
 
         public KhachHangController(ApplicationDbContext context)
         {
@@ -48,6 +50,17 @@ namespace Super_Book_Store.Controllers
         // GET: KhachHang/Create
         public IActionResult Create()
         {
+             // Sinh ma tu dong
+            var newID = "";
+            if(_context.KhachHang.Count() == 0){
+                newID = "KH01";
+            }
+            else{
+                var KHC = _context.KhachHang.OrderByDescending(x=>x.KhachHangID).First().KhachHangID;
+                newID = KH.AutoGenerateKey(KHC);
+            }
+            ViewBag.KhachHangID = newID;
+            // end
             ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID");
             ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID");
             return View();

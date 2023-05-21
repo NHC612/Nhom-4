@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Super_Book_Store.Models;
+using Super_Book_Store.Models.Process;
 
 namespace Super_Book_Store.Controllers
 {
     public class HoaDonController : Controller
     {
         private readonly ApplicationDbContext _context;
+        StringProcess HD = new StringProcess();
 
         public HoaDonController(ApplicationDbContext context)
         {
@@ -21,7 +23,7 @@ namespace Super_Book_Store.Controllers
         // GET: HoaDon
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.HoaDon.Include(h => h.KhachHang).Include(h => h.Kho).Include(h => h.Language);
+            var applicationDbContext = _context.HoaDon.Include(h => h.KhachHang).Include(h => h.Kho).Include(h => h.Language).Include(h => h.NhanVien);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -37,6 +39,7 @@ namespace Super_Book_Store.Controllers
                 .Include(h => h.KhachHang)
                 .Include(h => h.Kho)
                 .Include(h => h.Language)
+                .Include(h => h.NhanVien)
                 .FirstOrDefaultAsync(m => m.HoaDonID == id);
             if (hoaDon == null)
             {
@@ -49,9 +52,21 @@ namespace Super_Book_Store.Controllers
         // GET: HoaDon/Create
         public IActionResult Create()
         {
-            ViewData["KhachHangName"] = new SelectList(_context.Set<KhachHang>(), "KhachHangID", "KhachHangID");
-            ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID");
-            ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID");
+              // Sinh ma tu dong
+            var newID = "";
+            if(_context.HoaDon.Count() == 0){
+                newID = "HD01";
+            }
+            else{
+                var HDD = _context.HoaDon.OrderByDescending(x=>x.HoaDonID).First().HoaDonID;
+                newID = HD.AutoGenerateKey(HDD);
+            }
+            ViewBag.HoaDonID = newID;
+            // end
+            ViewData["KhachHangName"] = new SelectList(_context.KhachHang, "KhachHangID", "KhachHangID");
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID");
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID");
+            ViewData["NhanVienName"] = new SelectList(_context.NhanVien, "NhanVienID", "NhanVienID");
             return View();
         }
 
@@ -60,7 +75,7 @@ namespace Super_Book_Store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("HoaDonID,KhachHangName,BookNameID,LanguageID,Address")] HoaDon hoaDon)
+        public async Task<IActionResult> Create([Bind("HoaDonID,KhachHangName,BookNameID,LanguageID,NhanVienName,Address")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -68,9 +83,10 @@ namespace Super_Book_Store.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["KhachHangName"] = new SelectList(_context.Set<KhachHang>(), "KhachHangID", "KhachHangID", hoaDon.KhachHangName);
-            ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID", hoaDon.BookNameID);
-            ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID", hoaDon.LanguageID);
+            ViewData["KhachHangName"] = new SelectList(_context.KhachHang, "KhachHangID", "KhachHangID", hoaDon.KhachHangName);
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID", hoaDon.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", hoaDon.LanguageID);
+            ViewData["NhanVienName"] = new SelectList(_context.NhanVien, "NhanVienID", "NhanVienID", hoaDon.NhanVienName);
             return View(hoaDon);
         }
 
@@ -87,9 +103,10 @@ namespace Super_Book_Store.Controllers
             {
                 return NotFound();
             }
-            ViewData["KhachHangName"] = new SelectList(_context.Set<KhachHang>(), "KhachHangID", "KhachHangID", hoaDon.KhachHangName);
-            ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID", hoaDon.BookNameID);
-            ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID", hoaDon.LanguageID);
+            ViewData["KhachHangName"] = new SelectList(_context.KhachHang, "KhachHangID", "KhachHangID", hoaDon.KhachHangName);
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID", hoaDon.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", hoaDon.LanguageID);
+            ViewData["NhanVienName"] = new SelectList(_context.NhanVien, "NhanVienID", "NhanVienID", hoaDon.NhanVienName);
             return View(hoaDon);
         }
 
@@ -98,7 +115,7 @@ namespace Super_Book_Store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("HoaDonID,KhachHangName,BookNameID,LanguageID,Address")] HoaDon hoaDon)
+        public async Task<IActionResult> Edit(string id, [Bind("HoaDonID,KhachHangName,BookNameID,LanguageID,NhanVienName,Address")] HoaDon hoaDon)
         {
             if (id != hoaDon.HoaDonID)
             {
@@ -125,9 +142,10 @@ namespace Super_Book_Store.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["KhachHangName"] = new SelectList(_context.Set<KhachHang>(), "KhachHangID", "KhachHangID", hoaDon.KhachHangName);
-            ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID", hoaDon.BookNameID);
-            ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID", hoaDon.LanguageID);
+            ViewData["KhachHangName"] = new SelectList(_context.KhachHang, "KhachHangID", "KhachHangID", hoaDon.KhachHangName);
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID", hoaDon.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", hoaDon.LanguageID);
+            ViewData["NhanVienName"] = new SelectList(_context.NhanVien, "NhanVienID", "NhanVienID", hoaDon.NhanVienName);
             return View(hoaDon);
         }
 
@@ -143,6 +161,7 @@ namespace Super_Book_Store.Controllers
                 .Include(h => h.KhachHang)
                 .Include(h => h.Kho)
                 .Include(h => h.Language)
+                .Include(h => h.NhanVien)
                 .FirstOrDefaultAsync(m => m.HoaDonID == id);
             if (hoaDon == null)
             {

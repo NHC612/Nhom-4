@@ -18,6 +18,11 @@ namespace Super_Book_Store.Models
         [ForeignKey("LanguageID")]
         
         public Language? Language { get; set; }
+        public string NhanVienName {get; set; }
+        [ForeignKey("NhanVienName")]
+        
+        public NhanVien? NhanVien { get; set; }
+
         public string Address {get; set; }
         
 

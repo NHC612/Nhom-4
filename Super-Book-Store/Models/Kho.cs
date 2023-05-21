@@ -13,7 +13,6 @@ namespace Super_Book_Store.Models
         public string BookStoreExists{get; set; }
         public string InventoryBook {get; set; }
         public string ExportBook {get; set; }
-        
      
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UL6XfnFh34pNciMvPvuiMUm8W4mRp8jWjTEJM1jzAww=",
+  "Hash": "cUEOKccFP6+JHWsqsQtC3Q3KgWiBo3+j39Q6j0tvgVw=",
   "Source": "Super-Book-Store",
   "BasePath": "_content/Super-Book-Store",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\wwwroot\\css\\w3.css",
+      "SourceId": "Super-Book-Store",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\wwwroot\\",
+      "BasePath": "_content/Super-Book-Store",
+      "RelativePath": "css/w3.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\w3.css"
     },
     {
       "Identity": "C:\\Users\\ASUS\\OneDrive\\Máy tính\\BTL_PTPMQL\\Nhom-4\\Super-Book-Store\\wwwroot\\favicon.ico",

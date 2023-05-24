@@ -12,14 +12,17 @@
 <table class="table">
     <thead>
         <tr>
-             <th>
+            <th>
                 @Html.DisplayNameFor(model => model.BookID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BookName)
+                @Html.DisplayNameFor(model => model.TypeBook)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NumberbBook)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BookStoreExists)
@@ -36,14 +39,17 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+              <td>
                 @Html.DisplayFor(modelItem => item.BookID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BookName)
+                @Html.DisplayFor(modelItem => item.TypeBook)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumberbBook)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language.LanguageName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BookStoreExists)

@@ -10,11 +10,17 @@
     <h4>BookType</h4>
     <hr />
     <dl class="row">
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BookID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BookID)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Kho)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Kho.BookName)
+            @Html.DisplayFor(model => model.Kho.BookID)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.BookTypeNew)

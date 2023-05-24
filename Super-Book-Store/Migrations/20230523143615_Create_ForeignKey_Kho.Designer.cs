@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Super_Book_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230520063351_Create_ForeignKey_BookType")]
-    partial class Create_ForeignKey_BookType
+    [Migration("20230523143615_Create_ForeignKey_Kho")]
+    partial class Create_ForeignKey_Kho
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,10 +27,6 @@ namespace Super_Book_Store.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("BookNameID")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("BookTypeNew")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -39,11 +35,15 @@ namespace Super_Book_Store.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("TypeBook")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("BookID");
 
-                    b.HasIndex("BookNameID");
-
                     b.HasIndex("LanguageID");
+
+                    b.HasIndex("TypeBook");
 
                     b.ToTable("BookType");
                 });
@@ -51,10 +51,6 @@ namespace Super_Book_Store.Migrations
             modelBuilder.Entity("Super_Book_Store.Models.Kho", b =>
                 {
                     b.Property<string>("BookID")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("BookName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("BookStoreExists")
@@ -69,11 +65,21 @@ namespace Super_Book_Store.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("LanguageID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("NumberbBook")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("TypeBook")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("BookID");
+
+                    b.HasIndex("LanguageID");
 
                     b.ToTable("Khoss");
                 });
@@ -94,19 +100,30 @@ namespace Super_Book_Store.Migrations
 
             modelBuilder.Entity("Super_Book_Store.Models.BookType", b =>
                 {
-                    b.HasOne("Super_Book_Store.Models.Kho", "Kho")
-                        .WithMany()
-                        .HasForeignKey("BookNameID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Super_Book_Store.Models.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Super_Book_Store.Models.Kho", "Kho")
+                        .WithMany()
+                        .HasForeignKey("TypeBook")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Kho");
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.Kho", b =>
+                {
+                    b.HasOne("Super_Book_Store.Models.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Language");
                 });

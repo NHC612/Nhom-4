@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.BookID)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Kho)
             </th>
             <th>
@@ -30,8 +33,11 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+             <td>
+                @Html.DisplayFor(modelItem => item.Kho.BookID)
+            </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Kho.BookName)
+                @Html.DisplayFor(modelItem => item.Kho.TypeBook)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BookTypeNew)
@@ -40,7 +46,7 @@
                 @Html.DisplayFor(modelItem => item.AuthorName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Language.LanguageID)
+                @Html.DisplayFor(modelItem => item.Language.LanguageName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.BookID">Edit</a> |

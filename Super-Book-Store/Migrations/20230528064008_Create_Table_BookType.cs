@@ -5,60 +5,17 @@
 namespace Super_Book_Store.Migrations
 {
     /// <inheritdoc />
-    public partial class Create_Table_NhanVien : Migration
+    public partial class Create_Table_BookType : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Khoss",
-                columns: table => new
-                {
-                    BookID = table.Column<string>(type: "TEXT", nullable: false),
-                    BookName = table.Column<string>(type: "TEXT", nullable: false),
-                    NumberbBook = table.Column<string>(type: "TEXT", nullable: false),
-                    BookStoreExists = table.Column<string>(type: "TEXT", nullable: false),
-                    InventoryBook = table.Column<string>(type: "TEXT", nullable: false),
-                    ExportBook = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Khoss", x => x.BookID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Language",
-                columns: table => new
-                {
-                    LanguageID = table.Column<string>(type: "TEXT", nullable: false),
-                    LanguageName = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Language", x => x.LanguageID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "NhanVien",
-                columns: table => new
-                {
-                    NhanVienID = table.Column<string>(type: "TEXT", nullable: false),
-                    NhanVienName = table.Column<string>(type: "TEXT", nullable: false),
-                    Sex = table.Column<string>(type: "TEXT", nullable: false),
-                    Address = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_NhanVien", x => x.NhanVienID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "BookType",
                 columns: table => new
                 {
-                    BookID = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    BookNameID = table.Column<string>(type: "TEXT", nullable: false),
+                    BookID = table.Column<string>(type: "TEXT", nullable: false),
+                    TypeBook = table.Column<string>(type: "TEXT", nullable: false),
                     BookTypeNew = table.Column<string>(type: "TEXT", nullable: false),
                     AuthorName = table.Column<string>(type: "TEXT", nullable: false),
                     LanguageID = table.Column<string>(type: "TEXT", nullable: false)
@@ -67,8 +24,8 @@ namespace Super_Book_Store.Migrations
                 {
                     table.PrimaryKey("PK_BookType", x => x.BookID);
                     table.ForeignKey(
-                        name: "FK_BookType_Khoss_BookNameID",
-                        column: x => x.BookNameID,
+                        name: "FK_BookType_Khoss_TypeBook",
+                        column: x => x.TypeBook,
                         principalTable: "Khoss",
                         principalColumn: "BookID",
                         onDelete: ReferentialAction.Cascade);
@@ -110,6 +67,20 @@ namespace Super_Book_Store.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "NhanVien",
+                columns: table => new
+                {
+                    NhanVienID = table.Column<string>(type: "TEXT", nullable: false),
+                    NhanVienName = table.Column<string>(type: "TEXT", nullable: false),
+                    Sex = table.Column<string>(type: "TEXT", nullable: false),
+                    Address = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NhanVien", x => x.NhanVienID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HoaDon",
                 columns: table => new
                 {
@@ -117,6 +88,7 @@ namespace Super_Book_Store.Migrations
                     KhachHangName = table.Column<string>(type: "TEXT", nullable: false),
                     BookNameID = table.Column<string>(type: "TEXT", nullable: false),
                     LanguageID = table.Column<string>(type: "TEXT", nullable: false),
+                    NhanVienName = table.Column<string>(type: "TEXT", nullable: false),
                     Address = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -140,17 +112,23 @@ namespace Super_Book_Store.Migrations
                         principalTable: "Language",
                         principalColumn: "LanguageID",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_HoaDon_NhanVien_NhanVienName",
+                        column: x => x.NhanVienName,
+                        principalTable: "NhanVien",
+                        principalColumn: "NhanVienID",
+                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BookType_BookNameID",
-                table: "BookType",
-                column: "BookNameID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookType_LanguageID",
                 table: "BookType",
                 column: "LanguageID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookType_TypeBook",
+                table: "BookType",
+                column: "TypeBook");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HoaDon_BookNameID",
@@ -166,6 +144,11 @@ namespace Super_Book_Store.Migrations
                 name: "IX_HoaDon_LanguageID",
                 table: "HoaDon",
                 column: "LanguageID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HoaDon_NhanVienName",
+                table: "HoaDon",
+                column: "NhanVienName");
 
             migrationBuilder.CreateIndex(
                 name: "IX_KhachHang_BookNameID",
@@ -188,16 +171,10 @@ namespace Super_Book_Store.Migrations
                 name: "HoaDon");
 
             migrationBuilder.DropTable(
-                name: "NhanVien");
-
-            migrationBuilder.DropTable(
                 name: "KhachHang");
 
             migrationBuilder.DropTable(
-                name: "Khoss");
-
-            migrationBuilder.DropTable(
-                name: "Language");
+                name: "NhanVien");
         }
     }
 }

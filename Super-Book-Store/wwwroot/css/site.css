@@ -20,11 +20,98 @@ html {
 body {
   margin-bottom: 60px;
 }
+
 /* css navbars*/
 a.nav-link.text-dark.items {
-  display: none;
+    display: none;
 }
-li.nav-item:hover a.nav-link.text-dark.items{
-display: block !important;
-position: absolute;
+ li.nav-item:hover a.nav-link.text-dark.items{
+  display: block !important;
+  position: absolute;
+}
+
+/* sua nav */
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  text-align: center;
+  justify-content: space-evenly;
+  font-size: 20px;
+}
+
+.container-fluid {
+  font-weight: 600;
+}
+.navbar-light .navbar-brand {
+  color: #ff0018;
+  text-transform: uppercase;
+}
+.navbar-light .navbar-brand b{
+  font-size:30px;
+}
+
+nav.navbar.navbar-expand-sm.navbar-toggleable-sm.navbar-light.bg-white.border-bottom.box-shadow.mb-3 {
+  background: #cecece !important;
+}
+a.nav-link.text-dark:hover {
+  /* text-decoration: revert !important; */
+  transition: all .2s ease-in-out;
+  /* z-index: 2; */
+  position: relative;
+  background-color:#ffc107 !important;
+  color: #ff0707 !important;
+  border-radius: 10px;
+  transform: translateY(-5px);
+}
+
+/* end */
+
+/* content */
+.container {
+  padding: 150px 0;
+}
+
+h1.display-4 {
+  font-weight: 600;
+  text-transform: uppercase;
+  /* line-height: 40px; */
+}
+h1.display-4 b {
+  background: #ddd;
+}
+h1.display-4 b:hover{
+  transform: translateY(-10px);
+  color:#ff0018;
+}
+.text-center p {
+  font-size: 22px;
+  line-height: 40px;
+}
+/* end */
+
+/* table */
+
+tr {
+  /* background-color: #ddd; */
+  border-bottom: 1px solid #a39d9d;
+}
+
+main.pb-3 a {
+  padding: 4px 14px;
+  background-color: #e42c2c;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+thead tr{
+  
+  background-color: #1da1f2;
+  color: #fff;
+
+
 }

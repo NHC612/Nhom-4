@@ -5,7 +5,7 @@
 namespace Super_Book_Store.Migrations
 {
     /// <inheritdoc />
-    public partial class Create_Foreignkey_HoaDon : Migration
+    public partial class Create_Foreignkey_DonHang : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

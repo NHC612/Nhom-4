@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Super_Book_Store.Models
 {
-    [Table("HoaDon")]
-    public class HoaDon
+    [Table("DonHang")]
+    public class DonHang
     {
         [Key]
-        public string HoaDonID {get; set; }
+        public string DonHangID {get; set; }
         public string KhachHangName {get; set; }
          [ForeignKey("KhachHangName")]
         public KhachHang? KhachHang {get; set; }

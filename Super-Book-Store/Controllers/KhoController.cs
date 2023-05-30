@@ -13,7 +13,7 @@ namespace Super_Book_Store.Controllers
     public class KhoController : Controller
     {
         private readonly ApplicationDbContext _context;
-         private ExcelProcess _excelProcess = new ExcelProcess();
+        private ExcelProcess _excelProcess = new ExcelProcess();
 
         public KhoController(ApplicationDbContext context)
         {
@@ -23,9 +23,8 @@ namespace Super_Book_Store.Controllers
         // GET: Kho
         public async Task<IActionResult> Index()
         {
-              return _context.Kho != null ? 
-                          View(await _context.Kho.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Kho'  is null.");
+            var applicationDbContext = _context.Kho.Include(k => k.Language);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Kho/Details/5
@@ -37,6 +36,7 @@ namespace Super_Book_Store.Controllers
             }
 
             var kho = await _context.Kho
+                .Include(k => k.Language)
                 .FirstOrDefaultAsync(m => m.BookID == id);
             if (kho == null)
             {
@@ -49,6 +49,7 @@ namespace Super_Book_Store.Controllers
         // GET: Kho/Create
         public IActionResult Create()
         {
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageName");
             return View();
         }
 
@@ -57,7 +58,7 @@ namespace Super_Book_Store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookID,BookName,NumberbBook,BookStoreExists,InventoryBook,ExportBook")] Kho kho)
+        public async Task<IActionResult> Create([Bind("BookID,TypeBook,NumberbBook,LanguageID,BookStoreExists,InventoryBook,ExportBook")] Kho kho)
         {
             if (ModelState.IsValid)
             {
@@ -65,6 +66,7 @@ namespace Super_Book_Store.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageName", kho.LanguageID);
             return View(kho);
         }
 
@@ -81,6 +83,7 @@ namespace Super_Book_Store.Controllers
             {
                 return NotFound();
             }
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageName", kho.LanguageID);
             return View(kho);
         }
 
@@ -89,7 +92,7 @@ namespace Super_Book_Store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("BookID,BookName,NumberbBook,BookStoreExists,InventoryBook,ExportBook")] Kho kho)
+        public async Task<IActionResult> Edit(string id, [Bind("BookID,TypeBook,NumberbBook,LanguageID,BookStoreExists,InventoryBook,ExportBook")] Kho kho)
         {
             if (id != kho.BookID)
             {
@@ -116,6 +119,7 @@ namespace Super_Book_Store.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageName", kho.LanguageID);
             return View(kho);
         }
 
@@ -128,6 +132,7 @@ namespace Super_Book_Store.Controllers
             }
 
             var kho = await _context.Kho
+                .Include(k => k.Language)
                 .FirstOrDefaultAsync(m => m.BookID == id);
             if (kho == null)
             {
@@ -160,7 +165,8 @@ namespace Super_Book_Store.Controllers
         {
           return (_context.Kho?.Any(e => e.BookID == id)).GetValueOrDefault();
         }
-         public async Task<IActionResult>Upload()
+        // uploading
+          public async Task<IActionResult>Upload()
         {
             return View();
         }
@@ -185,16 +191,18 @@ namespace Super_Book_Store.Controllers
                         var dt = _excelProcess.ExcelToDataTable(fileLocation);
                         for(int i = 0; i< dt.Rows.Count; i++)
                         {
-                            var kh = new Kho();
-                            kh.BookID = dt.Rows[i][0].ToString();
-                            kh.BookName = dt.Rows[i][1].ToString();
-                            kh.NumberbBook = dt.Rows[i][2].ToString();
-                            kh.BookStoreExists = dt.Rows[i][3].ToString();
-                            kh.InventoryBook = dt.Rows[i][4].ToString();
-                            kh.ExportBook = dt.Rows[i][5].ToString();
+                            var emp = new Kho();
+
+                            emp.BookID = dt.Rows[i][0].ToString();
+                            emp.TypeBook = dt.Rows[i][1].ToString();
+                            emp.NumberbBook = dt.Rows[i][2].ToString();
+                            emp.LanguageID = dt.Rows[i][3].ToString();
+                            emp.BookStoreExists = dt.Rows[i][4].ToString();
+                            emp.InventoryBook = dt.Rows[i][5].ToString();
+                            emp.ExportBook = dt.Rows[i][6].ToString();
 
 
-                            _context.Kho.Add(kh);
+                            _context.Kho.Add(emp);
                         } 
 
                         await _context.SaveChangesAsync();
@@ -206,6 +214,4 @@ namespace Super_Book_Store.Controllers
         }
     }
 }
-
-
 

@@ -50,7 +50,7 @@ namespace Super_Book_Store.Controllers
         // GET: KhachHang/Create
         public IActionResult Create()
         {
-             // Sinh ma tu dong
+            // Sinh ma tu dong
             var newID = "";
             if(_context.KhachHang.Count() == 0){
                 newID = "KH01";
@@ -61,8 +61,8 @@ namespace Super_Book_Store.Controllers
             }
             ViewBag.KhachHangID = newID;
             // end
-            ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID");
-            ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID");
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID");
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID");
             return View();
         }
 
@@ -79,8 +79,8 @@ namespace Super_Book_Store.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID", khachHang.BookNameID);
-            ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID", khachHang.LanguageID);
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID", khachHang.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", khachHang.LanguageID);
             return View(khachHang);
         }
 
@@ -97,8 +97,8 @@ namespace Super_Book_Store.Controllers
             {
                 return NotFound();
             }
-            ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID", khachHang.BookNameID);
-            ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID", khachHang.LanguageID);
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID", khachHang.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", khachHang.LanguageID);
             return View(khachHang);
         }
 
@@ -134,8 +134,8 @@ namespace Super_Book_Store.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BookNameID"] = new SelectList(_context.Set<Kho>(), "BookID", "BookID", khachHang.BookNameID);
-            ViewData["LanguageID"] = new SelectList(_context.Set<Language>(), "LanguageID", "LanguageID", khachHang.LanguageID);
+            ViewData["BookNameID"] = new SelectList(_context.Kho, "BookID", "BookID", khachHang.BookNameID);
+            ViewData["LanguageID"] = new SelectList(_context.Language, "LanguageID", "LanguageID", khachHang.LanguageID);
             return View(khachHang);
         }
 

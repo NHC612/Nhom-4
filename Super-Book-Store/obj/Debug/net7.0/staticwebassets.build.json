@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nXIojmGzkTBKfNbZjqr/vht/pPINS9hk4uTz3SeoJ9Q=",
+  "Hash": "+9DZmi2F/N5alhi1gZ1jcrv7pqzxXaISHtNgSQXwAiU=",
   "Source": "Super-Book-Store",
   "BasePath": "_content/Super-Book-Store",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\Nitro\\Desktop\\Main BTL\\Nhom-4\\Super-Book-Store\\wwwroot\\css\\w3.css",
+      "SourceId": "Super-Book-Store",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nitro\\Desktop\\Main BTL\\Nhom-4\\Super-Book-Store\\wwwroot\\",
+      "BasePath": "_content/Super-Book-Store",
+      "RelativePath": "css/w3.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\w3.css"
     },
     {
       "Identity": "C:\\Users\\Nitro\\Desktop\\Main BTL\\Nhom-4\\Super-Book-Store\\wwwroot\\favicon.ico",

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Super_Book_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230521103316_Create_Foreignkey_HoaDon")]
-    partial class Create_Foreignkey_HoaDon
+    [Migration("20230528064008_Create_Table_BookType")]
+    partial class Create_Table_BookType
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,15 +20,10 @@ namespace Super_Book_Store.Migrations
 
             modelBuilder.Entity("Super_Book_Store.Models.BookType", b =>
                 {
-                    b.Property<int>("BookID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("AuthorName")
-                        .IsRequired()
+                    b.Property<string>("BookID")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("BookNameID")
+                    b.Property<string>("AuthorName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -40,11 +35,15 @@ namespace Super_Book_Store.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("TypeBook")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("BookID");
 
-                    b.HasIndex("BookNameID");
-
                     b.HasIndex("LanguageID");
+
+                    b.HasIndex("TypeBook");
 
                     b.ToTable("BookType");
                 });
@@ -130,10 +129,6 @@ namespace Super_Book_Store.Migrations
                     b.Property<string>("BookID")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("BookName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("BookStoreExists")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -146,11 +141,21 @@ namespace Super_Book_Store.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("LanguageID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("NumberbBook")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("TypeBook")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("BookID");
+
+                    b.HasIndex("LanguageID");
 
                     b.ToTable("Khoss");
                 });
@@ -193,15 +198,15 @@ namespace Super_Book_Store.Migrations
 
             modelBuilder.Entity("Super_Book_Store.Models.BookType", b =>
                 {
-                    b.HasOne("Super_Book_Store.Models.Kho", "Kho")
-                        .WithMany()
-                        .HasForeignKey("BookNameID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Super_Book_Store.Models.Language", "Language")
                         .WithMany()
                         .HasForeignKey("LanguageID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Super_Book_Store.Models.Kho", "Kho")
+                        .WithMany()
+                        .HasForeignKey("TypeBook")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -260,6 +265,17 @@ namespace Super_Book_Store.Migrations
                         .IsRequired();
 
                     b.Navigation("Kho");
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("Super_Book_Store.Models.Kho", b =>
+                {
+                    b.HasOne("Super_Book_Store.Models.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Language");
                 });

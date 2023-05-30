@@ -49,7 +49,7 @@ namespace Super_Book_Store.Controllers
         // GET: NhanVien/Create
         public IActionResult Create()
         {
-            // Sinh ma tu dong
+              // Sinh ma tu dong
             var newID = "";
             if(_context.NhanVien.Count() == 0){
                 newID = "NV01";
